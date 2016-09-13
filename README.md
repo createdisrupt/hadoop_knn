@@ -1,2 +1,4 @@
 # hadoop_knn
-Use KNN algorithm to determine the k nearest neighbours from a dataset S (car models) for every point in a dataset R (test data)
+
+The KNN algorithm determines the k nearest neighbors from a dataset S (car models) for every point in a dataset R (test data). Performing KNN involves a join and a search (NN). KNN joins are are performed more efficiently using a distributed system like HDFS. The KNN algorithm is well suited to the MapReduce programming paradigm as it only needs a single pass. Data (files) stored in HDFS are split across many DataNode’s so it is efficient to run the algorithm once on each DataNode in the HDFS cluster. MapReduce breaks a file into a number of splits and a single map job processes a single split. MapReduce programming paradigm consists of a map and reduce function. The map function is invoked for every record in input data sets (R and S) and produces a partitioned and sorted set of intermediate results (based on blocks of relevant data residing in DataNode). The reduce function fetches sorted data from the appropriate partition (DataNode), produced by the map function and produces final output data.
+
